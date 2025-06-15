@@ -5,8 +5,8 @@ calculates the current state of each of the rockets.
 
 ## Running the code
 
-The project uses [Taskfile](https://taskfile.dev) as task runner. (Installation
-instructions)[https://taskfile.dev/installation/]. This is mainly due to it
+The project uses [Taskfile](https://taskfile.dev) as task runner. [Installation
+instructions](https://taskfile.dev/installation/). This is mainly due to it
 being more modern than eg. `make`.
 
 See the available tasks using `task -l`. Some tasks depend on a few tools being
