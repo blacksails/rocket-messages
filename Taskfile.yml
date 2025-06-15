@@ -1,0 +1,42 @@
+version: '3'
+
+tasks:
+  default:
+    deps:
+      - build
+    silent: true
+
+  build:
+    desc: 🔨 Build rocket-messages
+    sources:
+      - "**/*.go"
+    generates:
+      - bin/rocket-messages
+    cmds:
+      - go build -o ./bin/rocket-messages ./cmd/rocket-messages
+
+  run:
+    desc: ✉️ Run rocket-messages
+    deps:
+      - build
+    cmds:
+      - ./bin/rocket-messages
+
+  run-rockets:
+    desc: 🚀 Run rockets
+    cmds:
+      - $ROCKET_BINARY launch "http://localhost:8080/messages"
+          --message-delay=500ms
+          --max-messages=1000
+    env:
+      ROCKET_BINARY: ./bin/rockets
+
+  test:
+    desc: ✅ Run tests
+    cmds:
+      - go test -v ./...
+
+  watch-rockets:
+    desc: 👀 Watch rockets
+    cmds:
+      - watch -t 'curl -s http://localhost:8080/rockets | jq'
